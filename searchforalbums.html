@@ -30,7 +30,11 @@
             <a onclick="getAlbums()" class="search-button">Search!</a>
       </div>
     </div>
-
+    <div class="album-card">
+        <img class="album-cover" src="" alt="Album Cover">
+        <h2 class="album-name"></h2>
+        <p class="album-artist"></p>
+    </div>
 </div>
 
 <script>
@@ -55,14 +59,20 @@
                 })
                 .then(response => response.json())
                     .then(data => {
-                                    // Handle and display search results here
-                                    resultsList.innerHTML = ''; // Clear previous results
-                                    const albums = data.albums.items;
-                                    albums.forEach(album => {
-                                      const listItem = document.createElement('li');
-                                      listItem.textContent = album.name;
-                                      resultsList.appendChild(listItem);
-                                    });
+                      resultsList.innerHTML = ''; // Clear previous results
+                    const albums = data.albums.items;
+
+                    albums.forEach(album => {
+                        const listItem = document.createElement('li');
+                        const albumCard = document.querySelector('.album-card').cloneNode(true);
+
+                        albumCard.querySelector('.album-name').textContent = album.name;
+                        albumCard.querySelector('.album-artist').textContent = album.artists[0].name; // Assuming the first artist is displayed
+                        albumCard.querySelector('.album-cover').src = album.images[0].url; // Assuming you want the first image (200x200px)
+
+                        listItem.appendChild(albumCard);
+                        resultsList.appendChild(listItem);
+                    });
                      })
                 .catch(error => {
                   console.error('Error:', error);
@@ -79,3 +89,4 @@
 
 </body>
 </html>
+

@@ -47,4 +47,30 @@
 }
 
 /* album cards*/
+.album-results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
 
+.album-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.album-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.album-card h3 {
+    margin: 10px 0;
+}
+
+.album-card p {
+    margin: 0;
+}

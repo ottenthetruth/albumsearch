@@ -33,8 +33,7 @@
 </div>
 
 <div class="parent2">
-  <div class="album-cards-container">
-  </div>
+
 </div>
 
 
@@ -106,7 +105,6 @@
 
               // Clear previous results
               parent2.innerHTML = '';
-              const albumCardsContainer = document.querySelector('.album-cards-container');
 
               // Loop through the album results and create individual cards
               albumResults.forEach((album) => {
@@ -128,7 +126,6 @@
               albumCard.appendChild(albumCover);
 
               parent2.appendChild(albumCard);
-              albumCardsContainer.appendChild(albumCard);
               });
             } /* end if response status */
         }

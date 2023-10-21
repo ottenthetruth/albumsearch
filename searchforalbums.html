@@ -107,7 +107,31 @@
                     document.getElementById('album-name').textContent = 'Not currently playing anything on Spotify.';
                 }
         }/*end if access token*/
+    if (albumData) {
+        const albumResultsContainer = document.getElementById('album-results');
+        albumResultsContainer.innerHTML = ''; // Clear previous results
 
+        albumData.items.forEach(album => {
+            const albumCard = document.createElement('div');
+            albumCard.classList.add('album-card');
+
+            const albumImage = document.createElement('img');
+            albumImage.src = album.images[0].url;
+            albumImage.alt = `${album.name} Album Cover`;
+
+            const albumName = document.createElement('h3');
+            albumName.textContent = album.name;
+
+            const artistName = document.createElement('p');
+            artistName.textContent = album.artists[0].name;
+
+            albumCard.appendChild(albumImage);
+            albumCard.appendChild(albumName);
+            albumCard.appendChild(artistName);
+
+            albumResultsContainer.appendChild(albumCard);
+        });
+    }
 
     } /* end getAlbums*/
 </script>

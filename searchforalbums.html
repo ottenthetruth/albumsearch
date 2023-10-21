@@ -54,15 +54,15 @@
             const response = await fetch(`https://api.spotify.com/v1/search?q=album:${searchQuery}&type=album&limit=5`, {
                     method: 'GET',
                     headers: {
-                        'Authorization': `Bearer ${accessToken}`
-                    }
-                })
+                        'Authorization': `Bearer ${accessToken}`,
+                    },
+                });
                 .then(response => response.json())
                     .then(data => {
                       resultsList.innerHTML = ''; // Clear previous results
-                    const albums = data.albums.items;
+                      const albums = data.albums.items;
 
-                    albums.forEach(album => {
+                    albums.forEach(albums => {
                         const listItem = document.createElement('li');
                         const albumCard = document.querySelector('.album-card').cloneNode(true);
 
@@ -74,12 +74,8 @@
                         resultsList.appendChild(listItem);
                     });
                      })
-                .catch(error => {
-                  console.error('Error:', error);
-                });
 
           } /*end if access token*/
-
 
     } /* end getAlbums*/
 </script>

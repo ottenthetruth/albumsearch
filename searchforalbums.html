@@ -39,8 +39,8 @@
 
 <script>
     getAlbums();
-    
-    async function getAccessToken() {
+
+async function getAccessToken() {
     const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
     if (code) {
@@ -84,7 +84,7 @@
         window.location.href = spotifyAuthURL;
     }
 
-    async function getAlbums() {
+async function getAlbums() {
         const resultsList = document.createElement('ul');
           authorizeSpotify();
           const accessToken = await getAccessToken();
@@ -116,7 +116,7 @@
 
           } /*end if access token*/
 
-    } /* end getAlbums*/
+} /* end getAlbums*/
 </script>
 
 </body>

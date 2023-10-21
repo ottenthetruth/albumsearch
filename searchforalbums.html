@@ -75,12 +75,11 @@
 
     } /* end getAccessToken */
 
-    async function getAlbums() {
-
-          const accessToken = await getAccessToken();
-          if(accessToken) {
-            const searchQuery = document.getElementById("mysearch");
-            const response = await fetch(`https://api.spotify.com/v1/search?q=album:${searchQuery}&type=album&limit=1`, {
+        async function getAlbums() {
+            const accessToken = await getAccessToken();
+            if (accessToken) {
+                const searchQuery = document.getElementById("mysearch").value; // Use .value to get the input's value
+                const response = await fetch(`https://api.spotify.com/v1/search?q=album:${searchQuery}&type=album&limit=1`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${accessToken}`,
@@ -88,24 +87,29 @@
                 });
 
                 if (response.status === 200) {
+                    const data = await response.json();
+                    const albumData = data.albums.items[0]; // Get the first album result
 
-                const data = await response.json();
-                const albumName = data.item.album.name;
-                const artistName = data.item.artists[0].name;
-                const albumCoverUrl = data.item.album.images[0].url;
+                    if (albumData) {
+                        const albumName = albumData.name;
+                        const artistName = albumData.artists[0].name;
+                        const albumCoverUrl = albumData.images[0].url;
 
-                document.getElementById('album-name').textContent = albumName;
-                document.getElementById('artist-name').textContent = artistName;
+                        document.getElementById('album-name').textContent = albumName;
+                        document.getElementById('artist-name').textContent = artistName;
 
-                const albumCoverElement = document.getElementById('album-cover');
-                albumCoverElement.src = albumCoverUrl;
-                albumCoverElement.alt = `${albumName} Album Cover`;
-
+                        const albumCoverElement = document.getElementById('album-cover');
+                        albumCoverElement.src = albumCoverUrl;
+                        albumCoverElement.alt = `${albumName} Album Cover`;
+                    } else {
+                        // Handle the case where no album was found
+                        alert('No album found.');
+                    }
                 } else {
-                    document.getElementById('currently-playing').textContent = 'Not currently playing anything on Spotify.';
+                    document.getElementById('album-name').textContent = 'Not currently playing anything on Spotify.';
                 }
-
-          } /*end if access token*/
+            }
+        }/*end if access token*/
 
 
     } /* end getAlbums*/

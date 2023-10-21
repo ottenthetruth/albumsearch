@@ -14,7 +14,7 @@
       <div class="banner">
           <h1 id="bannerText">YOUR WEBSITE BANNER</h1>
           <div class="nav-container">
-              <a class="imherebutton">Search for Albums!<a>
+              <a class="imherebutton">Search for Albums!</a>
               <a href="page2.html" class="page-button">My Profile</a>
               <a href="page3.html" class="page-button">Featured</a>
               <a href="page4.html" class="page-button">Page 4</a>
@@ -42,6 +42,7 @@
     }
 
     async function getAlbums() {
+        const resultsList = document.createElement('ul');
           authorizeSpotify();
           const accessToken = await getAccessToken();
           if(accessToken) {

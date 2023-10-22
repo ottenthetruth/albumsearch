@@ -92,7 +92,7 @@
         if (accessToken) {
             const searchQuery = document.getElementById("mysearch").value;
             const searchQueryArtist = document.getElementById("mysearch").value;
-            const response = await fetch(`https://api.spotify.com/v1/search?q=remaster%20album:${searchQuery}%20artist:${searchQueryArtist}&type=album&limit=5`, {
+            const response = await fetch(`https://api.spotify.com/v1/search?q=remaster%20album:${searchQuery}&type=album&limit=5`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,

@@ -105,54 +105,35 @@ async function getAccessToken() {
     } /* end getAccessToken */
 
     async function getAlbums() {
-        const accessToken = await getAccessToken();
+    const accessToken = await getAccessToken();
 
-        if (accessToken) {
-            const searchQuery = document.getElementById("mysearch").value;
-            const searchQueryArtist = document.getElementById("mysearchartist").value;
+    if (accessToken) {
+        const searchQuery = document.getElementById("mysearch").value;
+        const searchQueryArtist = document.getElementById("mysearchartist").value;
 
-            const response = await fetch(`https://api.spotify.com/v1/search?q=remaster%2520album%3A${searchQuery}%2520artist%3A${searchQueryArtist}&type=album&limit=5`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
+        const response = await fetch(`https://api.spotify.com/v1/search?q=remaster%2520album%3A${searchQuery}%2520artist%3A${searchQueryArtist}&type=album&limit=1`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
 
-    if (response.status === 200) {
-              /* Enter Code here */
-              const data = await response.json();
-              const albumResults = data.albums.items;
+        if (response.status === 200) {
+            const data = await response.json();
+            const albumResult = data.albums.items[0];
 
-              const albumCardsContainer = document.querySelector('.album-cards-container');
-              // Clear previous results
-              albumCardsContainer.innerHTML = '';
+            if (albumResult) {
+                const albumName = document.getElementById("album-name");
+                const artistName = document.getElementById("artist-name");
+                const albumCover = document.getElementById("album-cover");
 
-              // Loop through the album results and create individual cards
-              albumResults.forEach((album) => {
-                  if(album.artists[0].name.includes(document.getElementById("mysearchartist").value) && album.name.includes(document.getElementById("mysearch").value)) {
-              const albumCard = document.createElement('div');
-              albumCard.classList.add('album-card');
-
-              const albumName = document.createElement('h2');
-              albumName.textContent = album.name;
-
-              const artistName = document.createElement('p');
-              artistName.textContent = album.artists[0].name;
-
-              const albumCover = document.createElement('img');
-              albumCover.src = album.images[0].url;
-              albumCover.alt = 'Album Cover';
-
-              albumCard.appendChild(albumName);
-              albumCard.appendChild(artistName);
-              albumCard.appendChild(albumCover);
-
-              albumCardsContainer.appendChild(albumCard);
-                  }//end if match
-              });
-            } /* end if response status */
+                albumName.textContent = albumResult.name;
+                artistName.textContent = albumResult.artists[0].name;
+                albumCover.src = albumResult.images[0].url;
+            }
         }
     }
+}
 </script>
 
 </body>

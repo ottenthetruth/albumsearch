@@ -110,7 +110,7 @@
 
               // Loop through the album results and create individual cards
               albumResults.forEach((album) => {
-                  if(album.artists[0].name === document.getElementById("mysearchartist").value) {
+                  if(album.artists[0].name === document.getElementById("mysearchartist").value && album.name === document.getElementById("mysearch").value) {
               const albumCard = document.createElement('div');
               albumCard.classList.add('album-card');
 

@@ -99,15 +99,16 @@
                 },
             });
 
-            if (response.status === 200) {
+if (response.status === 200) {
               /* Enter Code here */
               const data = await response.json();
               const albumResults = data.albums.items;
 
-              const albumCardsContainer = document.querySelector('.album-cards-container');
+              const parent2 = document.querySelector('.parent2');
 
               // Clear previous results
-              albumCardsContainer.innerHTML = '';
+              parent2.innerHTML = '';
+              const albumCardsContainer = document.querySelector('.album-cards-container');
 
               // Loop through the album results and create individual cards
               albumResults.forEach((album) => {
@@ -128,6 +129,7 @@
               albumCard.appendChild(artistName);
               albumCard.appendChild(albumCover);
 
+              parent2.appendChild(albumCard);
               albumCardsContainer.appendChild(albumCard);
               });
             } /* end if response status */

@@ -8,11 +8,11 @@
 }
 .parent2 {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    height: 50vh;
+    height: 70vh;
 }
 
 .div1 {
@@ -31,6 +31,7 @@
     padding: 10px;
     border: 1px solid navy;
     border-radius: 20px;
+    margin-left: 10px;
 }
 
 .search-input::placeholder {
@@ -60,6 +61,7 @@
 .album-cards-container {
     display: flex;
     flex-wrap: nowrap; /* Prevent wrapping to the next line */
+    overflow-x: auto; /* Add horizontal scroll if there are too many cards */
 }
 
 .album-card {

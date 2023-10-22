@@ -110,7 +110,7 @@
 
               // Loop through the album results and create individual cards
               albumResults.forEach((album) => {
-
+                if(album.artists[0].name === document.getElementById("mysearchartist").value) {
               const albumCard = document.createElement('div');
               albumCard.classList.add('album-card');
 
@@ -129,7 +129,7 @@
               albumCard.appendChild(albumCover);
 
               albumCardsContainer.appendChild(albumCard);
-                   //end if match
+                }//end if match
               });
             } /* end if response status */
         }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="searchforalbums.css">
-    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="../general.css">
     <title>Search for Albums!</title>
 </head>
 
@@ -34,34 +34,18 @@
 </div>
 
 <div class="parent2">
-<div class="album-info">
-    <h2 id="album-name"></h2>
-    <p id="artist-name"></p>
-    <img id="album-cover" src="" alt="Album Cover">
-</div>
+  <div class ="div20">
+    <h1 id="album-name">Album</h1>
+    <p id="artist-name">Artist</p>
+  </div>
+  <div class="div21">
+    <img id="album-cover" src="../images/OK Computer.jpg">
+  </div>
 </div>
 
+<script src="searchwithenter.js"></script>
 <script>
-const searchbar1 = document.getElementById("mysearch");
-const searchbar2 = document.getElementById("mysearchartist");
-const searchButton = document.getElementById("searchButton");
-    
-searchbar1.addEventListener("keydown", function(event) {
-  // Check if the key pressed is "Enter" (key code 13)
-  if (event.key === "Enter" || event.keyCode === 13) {
-    // Trigger a click on the search button
-    searchButton.click();
-  }
-});
 
-searchbar2.addEventListener("keydown", function(event) {
-  // Check if the key pressed is "Enter" (key code 13)
-  if (event.key === "Enter" || event.keyCode === 13) {
-    // Trigger a click on the search button
-    searchButton.click();
-  }
-});
-    
 async function getAccessToken() {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
@@ -134,3 +118,4 @@ async function getAccessToken() {
 
 </body>
 </html>
+

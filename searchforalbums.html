@@ -50,7 +50,7 @@
 const searchInputs = document.querySelectorAll(".search-input");
 searchInputs.forEach(function(searchbar) {
   // Find the corresponding search button for each search input
-
+  const searchButton = searchbar.nextElementSibling;
   // Add an event listener to the search input for the "keydown" event
 searchbar.addEventListener("keydown", function(event) {
     if (event.key === "Enter" || event.keyCode === 13) {

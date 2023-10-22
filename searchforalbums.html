@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="searchforalbums.css">
-    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="C:\Users\andre\Documents\Spotify Page\general.css">
     <title>Search for Albums!</title>
 </head>
 
@@ -92,7 +92,7 @@
         if (accessToken) {
             const searchQuery = document.getElementById("mysearch").value;
             const searchQueryArtist = document.getElementById("mysearch").value;
-            const response = await fetch(`https://api.spotify.com/v1/search?q=album:${searchQuery}&artist:${searchQueryArtist}&type=album&limit=5`, {
+            const response = await fetch(`https://api.spotify.com/v1/search?q=album:${searchQuery} AND artist:${searchQueryArtist}&type=album&limit=5`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
@@ -104,10 +104,10 @@
               const data = await response.json();
               const albumResults = data.albums.items;
 
-              const parent2 = document.querySelector('.parent2');
+              const albumCardsContainer = document.querySelector('.album-cards-container');
 
               // Clear previous results
-              parent2.innerHTML = '';
+              albumCardsContainer.innerHTML = '';
               const albumCardsContainer = document.querySelector('.album-cards-container');
 
               // Loop through the album results and create individual cards
@@ -129,7 +129,6 @@
               albumCard.appendChild(artistName);
               albumCard.appendChild(albumCover);
 
-              parent2.appendChild(albumCard);
               albumCardsContainer.appendChild(albumCard);
               });
             } /* end if response status */

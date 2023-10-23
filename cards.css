@@ -1,0 +1,29 @@
+.card {
+  border: 1px solid navy;
+  color: navy;
+  background-color: #F9F6EE;
+  padding: 25px;
+  font-family: georgia, serif;
+  height: 300px;
+  width: 200px;
+}
+.card img {
+  width: 200px;
+  height: 200px;
+}
+.card h5 {
+  font-style: italic;
+}
+.card p {
+   color: lightgray;
+   font-style: italic;
+   text-align: right;
+   position: relative;
+   bottom: 4.5%;
+   right: 3%;
+}
+
+.container {
+  height: 100vh;
+  display: block;
+}

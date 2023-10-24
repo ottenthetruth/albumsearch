@@ -110,17 +110,17 @@ async function getAlbums() {
             const albumResult = data.albums.items;
             const cardContainer = document.getElementById("container");
             cardContainer.innerHTML = '';
-            
+
             if (albumResult) {
-                albumResult.forEach((data.albums.items) => {
-                const card = document.createElement("div");
-                card.classList.add("card");
-                card.innerHTML = `
-                <img src="${albumResult.images[0].url}">
-                <h4>${albumResult.name}</h4>
-                <h5>${albumResult.artists[0].name}</h5>
-                `;
-                cardContainer.appendChild(card);
+                albumResult.forEach(album => {
+                    const card = document.createElement("div");
+                    card.classList.add("card");
+                    card.innerHTML = `
+                    <img src="${album.images[0].url}">
+                    <h4>${album.name}</h4>
+                    <h5>${album.artists[0].name}</h5>
+                    `;
+                    cardContainer.appendChild(card);
                 });
             }
         }

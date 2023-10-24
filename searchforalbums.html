@@ -114,12 +114,9 @@ async function getAlbums() {
                 const card = document.createElement("div");
                 card.classList.add("album-card");
                 card.innerHTML = `
-                const albumImage = document.createElement("img");
-                albumImage.src = albumResult.images[0].url;
-                const albumName = document.createElement("h4");
-                albumName.textContent = albumResult.name;
-                const artistName = document.createElement("h5");
-                artistName.textContent = albumResult.artists[0].name;
+                <img src="albumResult.images[0].url">
+                <h4>albumResult.name</h4>
+                <h5>albumResult.artists[0].name</h5>
                 `;
                 cardContainer.appendChild(card);
             }

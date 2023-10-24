@@ -43,7 +43,7 @@
     <img id="album-cover" src="../images/OK Computer.jpg">
   </div>
 -->
-  <div class="container">
+  <div class="container" id="container">
 
   </div>
 
@@ -90,7 +90,7 @@ async function getAccessToken() {
 
     } /* end getAccessToken */
 
-    async function getAlbums() {
+async function getAlbums() {
     const accessToken = await getAccessToken();
 
     if (accessToken) {
@@ -109,29 +109,21 @@ async function getAccessToken() {
             const albumResult = data.albums.items[0];
 
             if (albumResult) {
-                const CardContainer = document.getElementById("container");
-                var card = document.createElement("card");
+                const cardContainer = document.getElementById("container");
+                const card = document.createElement("div");
                 card.classList.add("album-card");
-                var albumImage = document.createElement("img");
-                albumImage = document.getElementById("album-cover");
-                var albumName = document.createElement("h4");
-                albumName.textContent = document.getElementById("album-name");
-                var artistName = document.createElement("h5");
-                artistName = document.getElementById("artist-name");
+                const albumImage = document.createElement("img");
+                albumImage.src = albumResult.images[0].url;
+                const albumName = document.createElement("h4");
+                albumName.textContent = albumResult.name;
+                const artistName = document.createElement("h5");
+                artistName.textContent = albumResult.artists[0].name;
+
                 card.appendChild(albumImage);
                 card.appendChild(albumName);
                 card.appendChild(artistName);
 
                 cardContainer.appendChild(card);
-/*
-                const albumName = document.getElementById("album-name");
-                const artistName = document.getElementById("artist-name");
-                const albumCover = document.getElementById("album-cover");
-
-                albumName.textContent = albumResult.name;
-                artistName.textContent = albumResult.artists[0].name;
-                albumCover.src = albumResult.images[0].url;
-*/
             }
         }
     }

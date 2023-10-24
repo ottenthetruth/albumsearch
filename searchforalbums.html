@@ -114,9 +114,9 @@ async function getAlbums() {
                 const card = document.createElement("div");
                 card.classList.add("album-card");
                 card.innerHTML = `
-                <img>albumResult.images[0].url</img>
-                <h4>albumResult.name</h4>
-                <h5>albumResult.artists[0].name</h5>
+                <img>${albumResult.images[0].url}</img>
+                <h4>${albumResult.name}</h4>
+                <h5>${albumResult.artists[0].name}</h5>
                 `;
                 cardContainer.appendChild(card);
             }

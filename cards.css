@@ -27,3 +27,8 @@
   flex-wrap: wrap; /* Allow cards to wrap to the next line when there's not enough space */
   gap: 20px; /* Align cards to the left; you can adjust this based on your design */
 }
+.div {
+  display: flex;
+  flex-wrap: wrap; /* Allow cards to wrap to the next line when there's not enough space */
+  gap: 20px;
+}

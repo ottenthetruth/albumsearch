@@ -22,7 +22,7 @@
           </div>
       </div>
   </div>
-
+<!--
 <div class="parent">
     <div class="div1">
       <div class="search-bar">
@@ -32,8 +32,9 @@
       </div>
     </div>
 </div>
-
+-->
 <div class="parent2">
+
   <div class ="div20">
     <h1 id="album-name">Album</h1>
     <p id="artist-name">Artist</p>
@@ -107,13 +108,13 @@ async function getAccessToken() {
 
             if (albumResult) {
                 const CardContainer = document.getElementById("container");
-                const card = document.createElement("card");
+                var card = document.createElement("card");
                 card.classList.add("album-card");
-                const albumImage = document.createElement("img");
+                var albumImage = document.createElement("img");
                 albumImage = document.getElementById("album-cover");
-                const albumName = document.createElement("h4");
+                var albumName = document.createElement("h4");
                 albumName.textContent = document.getElementById("album-name");
-                const artistName = document.createElement("h5");
+                var artistName = document.createElement("h5");
                 artistName = document.getElementById("artist-name");
                 card.appendChild(albumImage);
                 card.appendChild(albumName);

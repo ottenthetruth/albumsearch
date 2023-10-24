@@ -89,7 +89,7 @@ async function getAccessToken() {
             }
         }/* end if(code) */
 
-    } /* end getAccessToken */
+} /* end getAccessToken */
 
 async function getAlbums() {
     const accessToken = await getAccessToken();
@@ -113,17 +113,14 @@ async function getAlbums() {
                 const cardContainer = document.getElementById("container");
                 const card = document.createElement("div");
                 card.classList.add("album-card");
+                card.innerHTML = `
                 const albumImage = document.createElement("img");
                 albumImage.src = albumResult.images[0].url;
                 const albumName = document.createElement("h4");
                 albumName.textContent = albumResult.name;
                 const artistName = document.createElement("h5");
                 artistName.textContent = albumResult.artists[0].name;
-
-                card.appendChild(albumImage);
-                card.appendChild(albumName);
-                card.appendChild(artistName);
-
+                `;
                 cardContainer.appendChild(card);
             }
         }

@@ -111,7 +111,7 @@ async function getAlbums() {
 
             if (albumResult) {
                 const cardContainer = document.getElementById("container");
-                const card = document.createElement("card");
+                const card = document.createElement("div");
                 card.classList.add("album-card");
                 card.innerHTML = `
                 <img src="${albumResult.images[0].url}">

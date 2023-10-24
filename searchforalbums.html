@@ -112,7 +112,7 @@ async function getAlbums() {
             cardContainer.innerHTML = '';
             
             if (albumResult) {
-                albumResult.forEach((items.index) => {
+                albumResult.forEach((albums) => {
                 const card = document.createElement("div");
                 card.classList.add("card");
                 card.innerHTML = `

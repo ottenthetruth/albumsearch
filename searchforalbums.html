@@ -38,6 +38,9 @@
     <h1 id="album-name">Album</h1>
     <p id="artist-name">Artist</p>
   </div>
+  <div class="container">
+
+  </div>
   <div class="div21">
     <img id="album-cover" src="../images/OK Computer.jpg">
   </div>
@@ -103,6 +106,21 @@ async function getAccessToken() {
             const albumResult = data.albums.items[0];
 
             if (albumResult) {
+                const CardContainer = document.getElementById("container");
+                const card = document.createElement("card");
+                card.classList.add("album-card");
+                const albumImage = document.createElement("img");
+                albumImage = document.getElementById("album-cover");
+                const albumName = document.createElement("h4");
+                albumName.textContent = document.getElementById("album-name");
+                const artistName = document.createElement("h5");
+                artistName = document.getElementById("artist-name");
+                card.appendChild(albumImage);
+                card.appendChild(albumName);
+                card.appendChild(artistName);
+
+                cardContainer.appendChild(card);
+/*
                 const albumName = document.getElementById("album-name");
                 const artistName = document.getElementById("artist-name");
                 const albumCover = document.getElementById("album-cover");
@@ -110,6 +128,7 @@ async function getAccessToken() {
                 albumName.textContent = albumResult.name;
                 artistName.textContent = albumResult.artists[0].name;
                 albumCover.src = albumResult.images[0].url;
+*/
             }
         }
     }
@@ -118,4 +137,3 @@ async function getAccessToken() {
 
 </body>
 </html>
-

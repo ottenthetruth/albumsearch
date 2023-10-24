@@ -19,9 +19,10 @@
    color: #6F8FAF;
    font-style: italic;
    text-align: right;
-   position: relative;
+   position: absolute;
    bottom: 4.5%;
    right: 3%;
+  text-decoration: underline;
 }
 .container {
   display: flex;

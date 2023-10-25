@@ -19,7 +19,7 @@
    color: #6F8FAF;
    font-style: italic;
    text-align: right;
-   position: absolute;
+   position: relative;
    bottom: 4.5%;
    right: 3%;
   text-decoration: underline;

@@ -50,6 +50,11 @@
 
 </div>
 
+<div class ="parent3">
+  <button id="showSavedAlbumsButton">Show Saved Albums</button>
+  <div class="saved-albums-container" id="savedAlbumsContainer"></div>
+</div>
+
 <script src="searchwithenter.js"></script>
 <script>
 
@@ -119,14 +124,74 @@ async function getAlbums() {
                     <img src="${album.images[0].url}">
                     <h4>${album.name}</h4>
                     <h5>${album.artists[0].name}</h5>
-                    <p>rate!</p>
+                    <p class="save-link">save!</p>
                     `;
+                    const saveLink = card.querySelector(".save-link");
+s                   aveLink.addEventListener("click", () => handleSaveClick(album));
                     cardContainer.appendChild(card);
                 });
             }
         }
     }
 }
+
+function convertImageToBase64(url, callback) {
+    const img = new Image();
+    img.crossOrigin = 'Anonymous'; // Ensure cross-origin access to the image
+    img.onload = function () {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+
+        // Convert the image to a Base64 string
+        const base64String = canvas.toDataURL('image/png');
+        callback(base64String);
+    };
+    img.src = url;
+}
+
+// Function to save an album to local storage
+function saveAlbum(album) {
+    convertImageToBase64(album.images[0].url, base64Image => {
+        const savedAlbums = JSON.parse(localStorage.getItem("savedAlbums")) || [];
+        savedAlbums.push({
+            name: album.name,
+            artist: album.artists[0].name,
+            cover: base64Image,
+        });
+        localStorage.setItem("savedAlbums", JSON.stringify(savedAlbums));
+    });
+}
+
+// Function to handle the click event on the "save!" paragraph
+function handleSaveClick(album) {
+    saveAlbum(album);
+    alert(`"${album.name}" by ${album.artists[0].name} has been saved to your collection.`);
+}
+
+function displaySavedAlbums() {
+    const savedAlbumsContainer = document.getElementById("savedAlbumsContainer");
+    savedAlbumsContainer.innerHTML = '';
+
+    const savedAlbums = JSON.parse(localStorage.getItem("savedAlbums")) || [];
+
+    savedAlbums.forEach(album => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+            <img src="${album.cover}">
+            <h4>${album.name}</h4>
+            <h5>${album.artist}</h5>
+        `;
+        savedAlbumsContainer.appendChild(card);
+    });
+}
+
+// Event listener for the "Show Saved Albums" button
+const showSavedAlbumsButton = document.getElementById("showSavedAlbumsButton");
+showSavedAlbumsButton.addEventListener("click", displaySavedAlbums);
 </script>
 
 </body>

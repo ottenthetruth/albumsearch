@@ -1,5 +1,4 @@
 .card {
-  display: inline-block;
   border: 1px solid navy;
   color: navy;
   background-color: #F9F6EE;
@@ -21,7 +20,7 @@
    font-style: italic;
    text-align: right;
    position: relative;
-   bottom: 4.5%;
+   bottom: 10%;
    right: 3%;
   text-decoration: underline;
 }

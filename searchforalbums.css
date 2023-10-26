@@ -14,12 +14,7 @@
     grid-row-gap: 0px;
     height: 50vh;
 }
-.parent3 {
-    display: block;
-    display: flex;
-    height: 100vh;
-}
-.savedAlbumsContainer {
+.saved-albums-container {
   height: 100vh;
   display: block;
   flex-wrap: wrap;

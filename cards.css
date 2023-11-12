@@ -1,13 +1,19 @@
 .card {
   display: inline-block;
-  border: 1px solid navy;
-  color: navy;
-  background-color: #F9F6EE;
+  border: 1px solid #2d3748;
+  color: inherit;
+  background-color: #edf2f7;
   padding: 25px;
   font-family: georgia, serif;
   height: 300px;
   width: 200px;
   margin: 20px;
+}
+
+body.dark-mode .card {
+  border: 1px solid #BB86FC;
+  background-color: #212121;
+
 }
 .card img {
   width: 200px;

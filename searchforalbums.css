@@ -19,8 +19,7 @@
 .search-bar {
     display: flex;
     align-items: center;
-    padding: 50px;
-}
+    padding: 50px; }
 
 /* placeholders "Album" and "Artist" */
 .search-input::placeholder {
@@ -58,8 +57,6 @@ body.dark-mode .search-input {
   text-decoration: none;
   user-select: none;
   cursor: pointer; }
-
 body.dark-mode .search-button {
     background-color: #BB86FC;
-    color: #121212;
-}
+    color: #121212; }

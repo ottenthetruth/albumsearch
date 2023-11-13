@@ -78,7 +78,7 @@ body.dark-mode .search-input {
   cursor: pointer;
 }
 
-.search-button {
+body.dark-mode .search-button {
     background-color: #BB86FC;
     color: #121212;
 }
